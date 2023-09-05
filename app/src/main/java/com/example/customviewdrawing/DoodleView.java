@@ -37,8 +37,10 @@ public class DoodleView extends View {
 
         _paintDoodle.setColor(Color.RED);
         _paintDoodle.setAntiAlias(true);
+
         _paintDoodle.setStyle(Paint.Style.STROKE);
-        
+        _paintDoodle.setStrokeWidth(5f); // Set the desired stroke width here
+
         /*
         >> Anti-aliasing is a technique used in computer graphics to smooth out the jagged,
          or pixelated edges of geometric shapes or text,
