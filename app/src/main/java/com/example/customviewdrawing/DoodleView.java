@@ -61,6 +61,15 @@ public class DoodleView extends View {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+
+        /*
+            >> case MotionEvent.ACTION_DOWN:: This case handles the ACTION_DOWN event, which occurs when the user presses their finger on the screen.
+
+            >> case MotionEvent.ACTION_MOVE:: This case handles the ACTION_MOVE event, which occurs when the user's finger is moving across the screen after pressing it.
+
+            >> case MotionEvent.ACTION_UP:: This case handles the ACTION_UP event, which occurs when the user releases their finger from the screen.
+         */
+
         float touchX = event.getX();
         float touchY = event.getY();
 
@@ -72,11 +81,29 @@ public class DoodleView extends View {
                 _pathDoodle.lineTo(touchX, touchY);
                 break;
             case MotionEvent.ACTION_UP:
-
                 break;
         }
         invalidate();
+        // postInvalidate();
+
         return true;
+        /*
+        >> Use invalidate() when you are on the UI thread and want to schedule a redraw.
+        >> Use postInvalidate() when you are on a background or non-UI thread and need to trigger a redraw of a view on the UI thread.
+        >> Both methods are essential for ensuring proper synchronization and responsiveness in Android apps,
+        especially when dealing with multi-threaded or background processing scenarios.
+
+        >> In general, if you are unsure about the context in which your code is executing,
+        or if it's possible for your code to be called from different threads,
+        it's a good practice to use postInvalidate() to ensure that view invalidation
+        and redraw always happen on the UI thread.
+
+        >> This approach helps prevent concurrency issues and ensures that your UI updates are safe and predictable.
+
+        >> However, if you are certain that your code is running on the UI thread,
+        you can use invalidate() for a more immediate redraw.
+         */
+
         // return super.onTouchEvent(event);
         /*
         >> should write super, without the super,
